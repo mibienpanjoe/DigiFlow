@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DigiFlow Footer</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FF6F00", // Orange 600
+                        "background-light": "#F8F9FA", // Light mode background
+                        "background-dark": "#001529",  // Deep Navy Blue 900
+                        "navy-700": "#003F6B", // Dark mode separator
+                    },
+                    fontFamily: {
+                        sans: ["Inter", "sans-serif"],
+                        display: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.375rem",
+                    },
+                },
+            },
+        };
+    </script>
+<style>::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #001529; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #FF6F00; 
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen flex flex-col justify-end text-slate-800 dark:text-white transition-colors duration-300 font-sans">
+<div class="fixed top-6 right-6 z-50">
+<button aria-label="Toggle Dark Mode" class="bg-primary text-white p-3 rounded-full shadow-lg hover:bg-orange-700 transition transform hover:scale-105" onclick="document.documentElement.classList.toggle('dark')">
+<i class="fas fa-adjust"></i>
+</button>
+</div>
+<footer class="relative w-full bg-background-light dark:bg-background-dark pt-4 overflow-hidden border-t border-gray-200 dark:border-transparent">
+<div class="absolute bottom-[-6%] left-1/2 -translate-x-1/2 w-full text-center pointer-events-none select-none z-0">
+<span class="text-[18vw] leading-none font-black text-gray-200 dark:text-white/5 opacity-40 dark:opacity-100 block tracking-tighter mix-blend-multiply dark:mix-blend-overlay uppercase">
+                DigiFlow
+            </span>
+<div class="absolute bottom-0 left-0 w-full h-full bg-gradient-to-t from-background-light via-transparent to-transparent dark:from-background-dark dark:via-transparent dark:to-transparent z-10 h-2/3"></div>
+<div class="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-primary/10 to-transparent dark:from-primary/20 dark:to-transparent z-10"></div>
+</div>
+<div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pb-12">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
+<div class="flex flex-col space-y-6">
+<div class="flex items-center space-x-3">
+<div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center text-white font-black text-2xl shadow-lg shadow-orange-500/30">
+                            D
+                        </div>
+<span class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">DigiFlow</span>
+</div>
+<p class="text-slate-600 dark:text-gray-300 leading-relaxed max-w-xs text-base">
+                        Partenaire digital professionnel et innovant au Burkina Faso. Nous transformons vos visions en solutions numériques d'excellence.
+                    </p>
+</div>
+<div>
+<h3 class="text-xl font-bold mb-6 text-slate-900 dark:text-white relative inline-block">
+                        Liens Rapides
+                        <span class="absolute -bottom-2 left-0 w-10 h-1 bg-primary rounded-full"></span>
+</h3>
+<ul class="space-y-4 text-slate-600 dark:text-gray-300 font-medium">
+<li><a class="hover:text-primary transition-colors duration-300 flex items-center group" href="#"><span class="w-0 group-hover:w-3 transition-all duration-300 overflow-hidden mr-0 group-hover:mr-2 h-[2px] bg-primary block rounded-full"></span> Accueil</a></li>
+<li><a class="hover:text-primary transition-colors duration-300 flex items-center group" href="#"><span class="w-0 group-hover:w-3 transition-all duration-300 overflow-hidden mr-0 group-hover:mr-2 h-[2px] bg-primary block rounded-full"></span> Services</a></li>
+<li><a class="hover:text-primary transition-colors duration-300 flex items-center group" href="#"><span class="w-0 group-hover:w-3 transition-all duration-300 overflow-hidden mr-0 group-hover:mr-2 h-[2px] bg-primary block rounded-full"></span> À propos</a></li>
+<li><a class="hover:text-primary transition-colors duration-300 flex items-center group" href="#"><span class="w-0 group-hover:w-3 transition-all duration-300 overflow-hidden mr-0 group-hover:mr-2 h-[2px] bg-primary block rounded-full"></span> Équipe</a></li>
+<li><a class="hover:text-primary transition-colors duration-300 flex items-center group" href="#"><span class="w-0 group-hover:w-3 transition-all duration-300 overflow-hidden mr-0 group-hover:mr-2 h-[2px] bg-primary block rounded-full"></span> Contact</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-xl font-bold mb-6 text-slate-900 dark:text-white relative inline-block">
+                        Services
+                        <span class="absolute -bottom-2 left-0 w-10 h-1 bg-primary rounded-full"></span>
+</h3>
+<ul class="space-y-4 text-slate-600 dark:text-gray-300 font-medium">
+<li><a class="hover:text-primary hover:translate-x-1 transition-all duration-300 block" href="#">Marketing Digital</a></li>
+<li><a class="hover:text-primary hover:translate-x-1 transition-all duration-300 block" href="#">Création de Contenu</a></li>
+<li><a class="hover:text-primary hover:translate-x-1 transition-all duration-300 block" href="#">Design Graphique</a></li>
+<li><a class="hover:text-primary hover:translate-x-1 transition-all duration-300 block" href="#">Rédaction Pro</a></li>
+<li><a class="hover:text-primary hover:translate-x-1 transition-all duration-300 block" href="#">E-Commerce</a></li>
+<li><a class="hover:text-primary hover:translate-x-1 transition-all duration-300 block" href="#">Développement Web</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-xl font-bold mb-6 text-slate-900 dark:text-white relative inline-block">
+                        Contactez-Nous
+                        <span class="absolute -bottom-2 left-0 w-10 h-1 bg-primary rounded-full"></span>
+</h3>
+<ul class="space-y-5 text-slate-600 dark:text-gray-300">
+<li class="flex items-start space-x-3 group">
+<div class="mt-1 w-8 h-8 rounded-full bg-slate-200 dark:bg-navy-700 flex items-center justify-center shrink-0 group-hover:bg-primary transition-colors duration-300">
+<i class="fas fa-map-marker-alt text-slate-600 dark:text-white group-hover:text-white text-sm"></i>
+</div>
+<span class="group-hover:text-primary transition-colors pt-1">Koudougou/Ouagadougou,<br/> Burkina Faso</span>
+</li>
+<li class="flex items-start space-x-3 group">
+<div class="mt-1 w-8 h-8 rounded-full bg-slate-200 dark:bg-navy-700 flex items-center justify-center shrink-0 group-hover:bg-primary transition-colors duration-300">
+<i class="fas fa-phone-alt text-slate-600 dark:text-white group-hover:text-white text-sm"></i>
+</div>
+<div class="flex flex-col pt-1">
+<a class="hover:text-primary transition-colors font-semibold" href="tel:+22674595061">+226 74 59 50 61</a>
+<a class="hover:text-primary transition-colors font-semibold" href="tel:+22674514882">+226 74 51 48 82</a>
+</div>
+</li>
+<li class="flex items-start space-x-3 group">
+<div class="mt-1 w-8 h-8 rounded-full bg-slate-200 dark:bg-navy-700 flex items-center justify-center shrink-0 group-hover:bg-primary transition-colors duration-300">
+<i class="fas fa-envelope text-slate-600 dark:text-white group-hover:text-white text-sm"></i>
+</div>
+<a class="hover:text-primary transition-colors pt-1 break-all" href="mailto:contact@digiflow.bf">contact@digiflow.bf</a>
+</li>
+</ul>
+<div class="mt-8 flex space-x-3">
+<a class="w-10 h-10 rounded-full border border-slate-300 dark:border-slate-600 bg-transparent flex items-center justify-center text-slate-500 dark:text-white hover:bg-primary hover:border-primary hover:text-white transition-all duration-300 transform hover:-translate-y-1" href="#">
+<i class="fab fa-facebook-f"></i>
+</a>
+<a class="w-10 h-10 rounded-full border border-slate-300 dark:border-slate-600 bg-transparent flex items-center justify-center text-slate-500 dark:text-white hover:bg-primary hover:border-primary hover:text-white transition-all duration-300 transform hover:-translate-y-1" href="#">
+<i class="fab fa-linkedin-in"></i>
+</a>
+<a class="w-10 h-10 rounded-full border border-slate-300 dark:border-slate-600 bg-transparent flex items-center justify-center text-slate-500 dark:text-white hover:bg-primary hover:border-primary hover:text-white transition-all duration-300 transform hover:-translate-y-1" href="#">
+<i class="fab fa-instagram"></i>
+</a>
+<a class="w-10 h-10 rounded-full border border-slate-300 dark:border-slate-600 bg-transparent flex items-center justify-center text-slate-500 dark:text-white hover:bg-primary hover:border-primary hover:text-white transition-all duration-300 transform hover:-translate-y-1" href="#">
+<i class="fab fa-whatsapp"></i>
+</a>
+</div>
+</div>
+</div>
+<div class="w-full h-px bg-slate-300 dark:bg-navy-700 mb-8 opacity-70"></div>
+<div class="flex flex-col md:flex-row justify-between items-center text-sm text-slate-500 dark:text-slate-400 gap-4 relative z-20">
+<div class="text-center md:text-left font-medium">
+                    © 2025 DigiFlow. Tous droits réservés.
+                </div>
+<div class="flex flex-col md:flex-row items-center gap-6">
+<div class="flex flex-wrap justify-center gap-6">
+<a class="hover:text-primary transition-colors relative group" href="#">
+                            Mentions légales
+                            <span class="absolute -bottom-1 left-0 w-0 h-px bg-primary transition-all duration-300 group-hover:w-full"></span>
+</a>
+<a class="hover:text-primary transition-colors relative group" href="#">
+                            Politique de confidentialité
+                            <span class="absolute -bottom-1 left-0 w-0 h-px bg-primary transition-all duration-300 group-hover:w-full"></span>
+</a>
+</div>
+<a class="flex items-center space-x-2 text-primary hover:text-orange-500 font-bold transition-colors bg-white/10 dark:bg-white/5 px-4 py-2 rounded-full backdrop-blur-sm" href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">
+<span>Back to top</span>
+<i class="fas fa-arrow-up animate-bounce"></i>
+</a>
+</div>
+</div>
+</div>
+</footer>
+<script>
+        // Check system preference but prioritize dark mode for this specific design request demonstration
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            // Defaulting to dark mode as requested by "Deep Navy Blue 900" prompt context unless system overrides
+            document.documentElement.classList.add('dark'); 
+        }
+    </script>
+
+</body></html>

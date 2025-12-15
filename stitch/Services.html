@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DigiFlow - Nos Services</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;400;500&amp;family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FF6F00", // DigiFlow Orange
+                        navy: "#001529", // Deep Navy Blue
+                    },
+                    fontFamily: {
+                        display: ["Playfair Display", "serif"],
+                        body: ["DM Sans", "sans-serif"],
+                    },
+                    transitionProperty: {
+                        'height': 'height',
+                        'spacing': 'margin, padding',
+                        'colors': 'background-color, border-color, color, fill, stroke',
+                    }
+                },
+            },
+        };
+    </script>
+<style>.service-content {
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: grid-template-rows 500ms ease-out, opacity 500ms ease-out;
+        opacity: 0;
+    }
+    .service-item.active .service-content {
+        grid-template-rows: 1fr;
+        opacity: 1;
+    }#services-list.has-active .service-item:not(.active) {
+        opacity: 0.5;
+    }.service-item.active {
+        background-color: #FFFFFF;
+        border-color: transparent;
+    }
+    .service-item.active h3 {
+        color: #001529 !important;
+        font-style: normal;}
+    .service-item.active p {
+        color: #001529;
+    }
+    .service-item.active li {
+        color: #001529;
+    }
+    .service-item.active .service-inner {
+        opacity: 1;
+        transform: translateY(0);
+    }.toggle-icon span {
+        transition: transform 0.3s ease;
+    }
+</style>
+</head>
+<body class="bg-navy text-white font-body min-h-screen flex flex-col items-center justify-center py-10 transition-colors duration-500">
+<header class="w-full max-w-7xl px-6 md:px-12 flex justify-between items-center mb-16 opacity-0 animate-[fadeIn_1s_ease-out_forwards]">
+<div class="font-display font-bold text-2xl tracking-tighter">DigiFlow<span class="text-primary">.</span></div>
+<nav class="hidden md:flex gap-8 text-sm font-medium uppercase tracking-widest text-gray-300">
+<a class="hover:text-primary transition-colors" href="#">Accueil</a>
+<a class="text-primary" href="#">Services</a>
+<a class="hover:text-primary transition-colors" href="#">Portfolio</a>
+<a class="hover:text-primary transition-colors" href="#">Contact</a>
+</nav>
+<button class="md:hidden text-2xl">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</header>
+<main class="w-full max-w-5xl px-4 md:px-8">
+<div class="text-center mb-16 flex items-center justify-center gap-4 animate-[fadeInUp_0.8s_ease-out_forwards]">
+<span class="text-primary text-xl">❖</span>
+<h2 class="text-lg md:text-xl font-bold uppercase tracking-[0.2em]">Nos Services</h2>
+<span class="text-primary text-xl">❖</span>
+</div>
+<div class="flex flex-col border-t border-white/20" id="services-list">
+<div class="service-item group border-b border-white/20 transition-all duration-500 cursor-pointer overflow-hidden" onclick="toggleService(this)">
+<div class="service-header flex justify-between items-center py-8 px-6 md:px-10 transition-all duration-300">
+<h3 class="font-display text-3xl md:text-5xl lg:text-6xl text-white font-light transition-colors duration-300">
+                        Marketing <span class="italic">Digital</span>
+</h3>
+<div class="toggle-icon text-3xl font-light text-primary transition-transform duration-300">
+<span class="material-symbols-outlined text-4xl">add</span>
+</div>
+</div>
+<div class="service-content overflow-hidden">
+<div class="min-h-0">
+<div class="service-inner p-8 md:p-12 pt-0 grid md:grid-cols-2 gap-8 items-end opacity-0 translate-y-4 transition-all duration-500 delay-100">
+<div class="space-y-6">
+<p class="text-lg md:text-xl leading-relaxed font-normal opacity-90">
+                                    Propulsez votre marque avec des stratégies e-commerce ciblées. Nous transformons vos visiteurs en clients fidèles grâce à des campagnes ROIstes et une présence sociale engageante.
+                                </p>
+<ul class="text-sm font-medium space-y-3 opacity-80">
+<li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> SEO / SEA</li>
+<li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Gestion des Réseaux Sociaux</li>
+<li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Email Marketing</li>
+</ul>
+</div>
+<div class="flex justify-end items-end hidden md:flex">
+<span class="material-symbols-outlined text-8xl text-primary opacity-20">shopping_bag</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="service-item group border-b border-white/20 transition-all duration-500 cursor-pointer overflow-hidden" onclick="toggleService(this)">
+<div class="service-header flex justify-between items-center py-8 px-6 md:px-10 transition-all duration-300">
+<h3 class="font-display text-3xl md:text-5xl lg:text-6xl text-white font-light transition-colors duration-300">
+                        Développement <span class="italic">Web</span>
+</h3>
+<div class="toggle-icon text-3xl font-light text-primary transition-transform duration-300">
+<span class="material-symbols-outlined text-4xl">add</span>
+</div>
+</div>
+<div class="service-content overflow-hidden">
+<div class="min-h-0">
+<div class="service-inner p-8 md:p-12 pt-0 grid md:grid-cols-2 gap-8 items-end opacity-0 translate-y-4 transition-all duration-500 delay-100">
+<div class="space-y-6">
+<p class="text-lg md:text-xl leading-relaxed font-normal opacity-90">
+                                    Des sites web ultra-rapides, sécurisés et conçus pour la conversion. De la vitrine élégante aux applications web complexes, nous codons votre succès pixel par pixel.
+                                </p>
+<ul class="text-sm font-medium space-y-3 opacity-80">
+<li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Sites Vitrines &amp; E-commerce</li>
+<li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Applications Web (React/Vue)</li>
+<li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Maintenance &amp; Sécurité</li>
+</ul>
+</div>
+<div class="flex justify-end items-end hidden md:flex">
+<span class="material-symbols-outlined text-8xl text-primary opacity-20">terminal</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="service-item group border-b border-white/20 transition-all duration-500 cursor-pointer overflow-hidden" onclick="toggleService(this)">
+<div class="service-header flex justify-between items-center py-8 px-6 md:px-10 transition-all duration-300">
+<h3 class="font-display text-3xl md:text-5xl lg:text-6xl text-white font-light transition-colors duration-300">
+                        Design <span class="italic">Graphique</span>
+</h3>
+<div class="toggle-icon text-3xl font-light text-primary transition-transform duration-300">
+<span class="material-symbols-outlined text-4xl">add</span>
+</div>
+</div>
+<div class="service-content overflow-hidden">
+<div class="min-h-0">
+<div class="service-inner p-8 md:p-12 pt-0 grid md:grid-cols-2 gap-8 items-end opacity-0 translate-y-4 transition-all duration-500 delay-100">
+<div class="space-y-6">
+<p class="text-lg md:text-xl leading-relaxed font-normal opacity-90">
+                                    Créez une identité visuelle inoubliable. Nous fusionnons l'art et la stratégie pour concevoir des logos, des chartes graphiques et des supports marketing qui marquent les esprits.
+                                </p>
+<ul class="text-sm font-medium space-y-3 opacity-80">
+<li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Branding &amp; Logos</li>
+<li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Supports Imprimés</li>
+<li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> UI/UX Design</li>
+</ul>
+</div>
+<div class="flex justify-end items-end hidden md:flex">
+<span class="material-symbols-outlined text-8xl text-primary opacity-20">brush</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="service-item group border-b border-white/20 transition-all duration-500 cursor-pointer overflow-hidden" onclick="toggleService(this)">
+<div class="service-header flex justify-between items-center py-8 px-6 md:px-10 transition-all duration-300">
+<h3 class="font-display text-3xl md:text-5xl lg:text-6xl text-white font-light transition-colors duration-300">
+                        Création <span class="italic">Contenu</span>
+</h3>
+<div class="toggle-icon text-3xl font-light text-primary transition-transform duration-300">
+<span class="material-symbols-outlined text-4xl">add</span>
+</div>
+</div>
+<div class="service-content overflow-hidden">
+<div class="min-h-0">
+<div class="service-inner p-8 md:p-12 pt-0 grid md:grid-cols-2 gap-8 items-end opacity-0 translate-y-4 transition-all duration-500 delay-100">
+<div class="space-y-6">
+<p class="text-lg md:text-xl leading-relaxed font-normal opacity-90">
+                                    Racontez votre histoire à travers des visuels captivants. Production vidéo, photographie professionnelle et motion design pour dynamiser votre communication.
+                                </p>
+<ul class="text-sm font-medium space-y-3 opacity-80">
+<li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Montage Vidéo</li>
+<li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Motion Design</li>
+<li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Photographie Produit</li>
+</ul>
+</div>
+<div class="flex justify-end items-end hidden md:flex">
+<span class="material-symbols-outlined text-8xl text-primary opacity-20">videocam</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="service-item group border-b border-white/20 transition-all duration-500 cursor-pointer overflow-hidden" onclick="toggleService(this)">
+<div class="service-header flex justify-between items-center py-8 px-6 md:px-10 transition-all duration-300">
+<h3 class="font-display text-3xl md:text-5xl lg:text-6xl text-white font-light transition-colors duration-300">
+                        Rédaction <span class="italic">Pro</span>
+</h3>
+<div class="toggle-icon text-3xl font-light text-primary transition-transform duration-300">
+<span class="material-symbols-outlined text-4xl">add</span>
+</div>
+</div>
+<div class="service-content overflow-hidden">
+<div class="min-h-0">
+<div class="service-inner p-8 md:p-12 pt-0 grid md:grid-cols-2 gap-8 items-end opacity-0 translate-y-4 transition-all duration-500 delay-100">
+<div class="space-y-6">
+<p class="text-lg md:text-xl leading-relaxed font-normal opacity-90">
+                                    Les mots justes pour convaincre. Copywriting, storytelling et rédaction web SEO pour donner une voix unique et percutante à votre marque.
+                                </p>
+<ul class="text-sm font-medium space-y-3 opacity-80">
+<li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Copywriting &amp; Slogans</li>
+<li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Articles de Blog SEO</li>
+<li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Newsletters</li>
+</ul>
+</div>
+<div class="flex justify-end items-end hidden md:flex">
+<span class="material-symbols-outlined text-8xl text-primary opacity-20">edit_note</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="mt-20 text-gray-500 text-sm opacity-50">
+        © 2023 DigiFlow Agency. Ouagadougou, BF.
+    </footer>
+<script>
+        function toggleService(element) {
+            const listContainer = document.getElementById('services-list');
+            const icon = element.querySelector('.toggle-icon span');
+            const innerContent = element.querySelector('.service-inner');
+            const isActive = element.classList.contains('active');
+            // Reset all items
+            const allItems = document.querySelectorAll('.service-item');
+            allItems.forEach(item => {
+                item.classList.remove('active');
+                // Reset Icon
+                const itemIcon = item.querySelector('.toggle-icon span');
+                itemIcon.textContent = 'add';
+                // Reset Inner Content Animation
+                const content = item.querySelector('.service-inner');
+                if(content) {
+                    content.classList.remove('opacity-100', 'translate-y-0');
+                    content.classList.add('opacity-0', 'translate-y-4');
+                }
+            });
+            listContainer.classList.remove('has-active');
+            if (!isActive) {
+                element.classList.add('active');
+                listContainer.classList.add('has-active');
+                // Change icon
+                icon.textContent = 'remove';
+                // Trigger inner animation
+                // Slight delay to ensure height transition has started
+                setTimeout(() => {
+                    innerContent.classList.remove('opacity-0', 'translate-y-4');
+                    innerContent.classList.add('opacity-100', 'translate-y-0');
+                }, 100);
+            }
+        }
+    </script>
+
+</body></html>
