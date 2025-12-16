@@ -1,4 +1,4 @@
-import { ReactNode, AnchorHTMLAttributes, ButtonHTMLAttributes } from 'react';
+import type { ReactNode, AnchorHTMLAttributes, ButtonHTMLAttributes } from 'react';
 
 interface BaseIconButtonProps {
     icon: ReactNode;

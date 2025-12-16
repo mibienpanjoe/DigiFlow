@@ -1,4 +1,4 @@
-import { ReactNode, ButtonHTMLAttributes, AnchorHTMLAttributes } from 'react';
+import type { ReactNode, ButtonHTMLAttributes, AnchorHTMLAttributes } from 'react';
 
 type ButtonVariant = 'primary' | 'secondary' | 'gradient' | 'ghost';
 type ButtonSize = 'sm' | 'md' | 'lg';
