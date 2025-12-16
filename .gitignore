@@ -11,11 +11,11 @@ node_modules
 dist
 dist-ssr
 *.local
-.Workflow.md
+Workflow.md
 docs
 scripts
 .agent
-.animations.md
+animations.md
 
 # Editor directories and files
 .vscode/*
