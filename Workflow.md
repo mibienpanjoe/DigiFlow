@@ -6,13 +6,6 @@
 1. **Input Folder:** `/stitch` - Place all HTML files from Stitch in this folder
 2. **Output Folder:** `/docs` - All analysis outputs will be saved here as markdown files
 
-```bash
-# Create required folders
-mkdir -p stitch
-mkdir -p docs
-# Place your Stitch HTML files in the stitch folder
-# Example: stitch/homepage.html, stitch/products.html, etc.
-```
 
 **INPUT SOURCE:** All HTML files to be analyzed must be placed in the `/stitch` folder.
 ---
@@ -307,5 +300,3 @@ Generate implementation rules based on your analysis.
 Build the application following only what was found in the code.
 Do not create anything not documented in your analysis.
 ```
-
-This workflow ensures agents understand exactly what to build from any Stitch design, regardless of style, purpose, or complexity.
