@@ -6,7 +6,7 @@ import CountUp from '../ui/CountUp';
 const stats = [
     { value: 10, suffix: 'M+', label: 'Réactions & Trafic' },
     { value: 99, suffix: '%', label: 'Satisfaction Clients' },
-    { value: 325, suffix: '+', label: 'Projets Réalisés' },
+    { value: 50, suffix: '+', label: 'Projets Réalisés' },
 ];
 
 const AboutSection = () => {

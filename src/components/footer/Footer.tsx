@@ -46,8 +46,12 @@ const Footer = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
                     <div className="flex flex-col space-y-6">
                         <div className="flex items-center space-x-3">
-                            <div className="w-12 h-12 bg-[#FF6F00] rounded-lg flex items-center justify-center text-white font-black text-2xl shadow-lg shadow-orange-500/30">
-                                D
+                            <div className="h-10 w-10 relative overflow-hidden rounded-full bg-white flex items-center justify-center p-1 shadow-lg shadow-black/20">
+                                <img
+                                    alt="DigiFlow Logo"
+                                    className="h-full w-full object-contain"
+                                    src="/logo.svg"
+                                />
                             </div>
                             <span className="text-3xl font-bold tracking-tight text-white">DigiFlow</span>
                         </div>

@@ -19,19 +19,21 @@ const Header = () => {
         <>
             <nav className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4">
                 <div className="w-full max-w-7xl bg-[#001529]/70 backdrop-blur-xl border border-white/10 rounded-full pl-2 pr-2 py-2 md:pl-6 md:pr-3 md:py-3 shadow-2xl flex justify-between items-center transition-all duration-300">
-                    <div className="flex-shrink-0 flex items-center gap-3">
-                        <div className="h-10 w-10 relative overflow-hidden rounded-full bg-white flex items-center justify-center p-1 shadow-lg shadow-black/20">
-                            <img
-                                alt="DigiFlow Logo"
-                                className="h-full w-full object-contain"
-                                src="/logo.svg"
-                            />
+                    <a href="#" className='outline-none'>
+                        <div className="flex-shrink-0 flex items-center gap-3">
+                            <div className="h-10 w-10 relative overflow-hidden rounded-full bg-white flex items-center justify-center p-1 shadow-lg shadow-black/20">
+                                <img
+                                    alt="DigiFlow Logo"
+                                    className="h-full w-full object-contain"
+                                    src="/logo.svg"
+                                />
+                            </div>
+                            <span className="font-bold text-lg tracking-tight text-white">
+                                DigiFlow
+                            </span>
                         </div>
-                        <span className="font-bold text-lg tracking-tight text-white">
-                            DigiFlow
-                        </span>
-                    </div>
-
+                    </a>
+                    
                     <div className="hidden lg:flex items-center gap-8">
                         {mainNavLinks.map((link) => (
                             <a

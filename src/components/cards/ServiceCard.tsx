@@ -45,7 +45,7 @@ const ServiceCard = ({ service, isActive, onToggle, isAnyActive }: ServiceCardPr
           transition-colors duration-300
           ${isActive ? 'text-[#001529]' : 'text-white'}
         `.replace(/\s+/g, ' ').trim()}>
-                    {service.title} <span className="italic">{service.titleItalic}</span>
+                    {service.title} <span>{service.titleItalic}</span>
                 </h3>
                 <div className="text-[#FF6F00] transition-transform duration-300">
                     {isActive ? (
