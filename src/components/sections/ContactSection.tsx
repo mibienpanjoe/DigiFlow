@@ -1,209 +1,295 @@
 import { type FormEvent, useState } from 'react';
-import { MapPin, Phone, Mail, ArrowUpRight } from 'lucide-react';
+import { MapPin, Phone, Mail } from 'lucide-react';
 import { contact } from '../../constants/theme';
-import Input from '../form/Input';
-import Textarea from '../form/Textarea';
-import Button from '../ui/Button';
 import Reveal from '../ui/Reveal';
 
+const inputBase: React.CSSProperties = {
+  background: 'rgba(254,104,20,0.03)',
+  border: '1px solid rgba(254,104,20,0.15)',
+  borderRadius: '10px',
+  color: '#F0F4FF',
+  outline: 'none',
+  width: '100%',
+  fontSize: '0.875rem',
+  padding: '12px 14px',
+  transition: 'border-color 0.2s',
+  fontFamily: 'Inter, sans-serif',
+};
+
+const labelStyle: React.CSSProperties = {
+  fontFamily: 'Syne, sans-serif',
+  fontSize: '0.6875rem',
+  fontWeight: 600,
+  letterSpacing: '0.12em',
+  textTransform: 'uppercase',
+  color: '#6B8CAE',
+  display: 'block',
+  marginBottom: '6px',
+};
+
 const ContactSection = () => {
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        phone: '',
-        message: '',
-    });
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [submitted, setSubmitted] = useState(false);
+  const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '' });
+  const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
-    const handleSubmit = async (e: FormEvent) => {
-        e.preventDefault();
-        setIsSubmitting(true);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
 
-        try {
-            const mailtoLink = `mailto:${contact.email}?subject=Nouveau projet de ${encodeURIComponent(formData.name)}&body=${encodeURIComponent(
-                `Nom: ${formData.name}\nEmail: ${formData.email}\nTéléphone: ${formData.phone}\n\nMessage:\n${formData.message}`
-            )}`;
-            window.location.href = mailtoLink;
-            setSubmitted(true);
-            setFormData({ name: '', email: '', phone: '', message: '' });
-        } catch (error) {
-            console.error('Form submission error:', error);
-        } finally {
-            setIsSubmitting(false);
-        }
-    };
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    setSubmitting(true);
+    const mailto = `mailto:${contact.email}?subject=Nouveau projet de ${encodeURIComponent(formData.name)}&body=${encodeURIComponent(
+      `Nom: ${formData.name}\nEmail: ${formData.email}\nTéléphone: ${formData.phone}\n\nMessage:\n${formData.message}`
+    )}`;
+    window.location.href = mailto;
+    setSubmitted(true);
+    setSubmitting(false);
+    setFormData({ name: '', email: '', phone: '', message: '' });
+  };
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const { name, value } = e.target;
-        setFormData((prev) => ({ ...prev, [name]: value }));
-    };
+  const infoItems = [
+    {
+      icon: MapPin,
+      label: 'Notre Adresse',
+      content: `${contact.address.city}, ${contact.address.country}`,
+      href: undefined,
+    },
+    {
+      icon: Phone,
+      label: 'Hotline',
+      content: contact.phones.join(' · '),
+      href: `tel:${contact.phones[0].replace(/\s/g, '')}`,
+    },
+    {
+      icon: Mail,
+      label: 'Email',
+      content: contact.email,
+      href: `mailto:${contact.email}`,
+    },
+  ];
 
-    return (
-        <section id="contact" className="relative py-12 lg:py-20 px-4 sm:px-6 lg:px-8">
-            <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
-                <div className="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-[#FF6F00]/15 rounded-full blur-[120px]" />
-                <div className="absolute bottom-[-10%] right-[-5%] w-[400px] h-[400px] bg-blue-900/20 rounded-full blur-[100px]" />
+  return (
+    <section
+      id="contact"
+      className="relative py-24 lg:py-32 overflow-hidden"
+      style={{ background: '#002248' }}
+    >
+      <div
+        className="pointer-events-none absolute top-0 left-0 w-[500px] h-[500px] opacity-20"
+        style={{ background: 'radial-gradient(circle, rgba(254,104,20,0.12) 0%, transparent 70%)' }}
+      />
+      <div
+        className="absolute top-0 left-0 right-0 h-px"
+        style={{ background: 'linear-gradient(90deg, transparent, rgba(254,104,20,0.3), transparent)' }}
+      />
+
+      <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+
+          {/* Left: Info */}
+          <div className="flex flex-col gap-10">
+            <Reveal>
+              <div>
+                <span className="section-label block mb-3">Contact</span>
+                <h2
+                  className="text-[clamp(2rem,5vw,3.5rem)] font-bold tracking-tight leading-tight"
+                  style={{ fontFamily: 'Syne, sans-serif', color: '#F0F4FF' }}
+                >
+                  Prêt à démarrer{' '}
+                  <span style={{ color: '#FE6814' }}>votre projet ?</span>
+                </h2>
+                <p className="text-sm leading-relaxed mt-4 max-w-xs" style={{ color: '#6B8CAE' }}>
+                  Discutons de vos ambitions et construisons l'avenir ensemble.
+                </p>
+              </div>
+            </Reveal>
+
+            {/* Info cards */}
+            <div className="flex flex-col gap-4">
+              {infoItems.map((item, i) => {
+                const Icon = item.icon;
+                return (
+                  <Reveal key={item.label} delay={0.1 + i * 0.1}>
+                    <div
+                      className="flex items-center gap-4 p-4 rounded-xl transition-all duration-300 group"
+                      style={{
+                        background: '#010B1A',
+                        border: '1px solid rgba(254,104,20,0.1)',
+                      }}
+                      onMouseEnter={(e) => {
+                        (e.currentTarget as HTMLElement).style.borderColor = 'rgba(254,104,20,0.3)';
+                      }}
+                      onMouseLeave={(e) => {
+                        (e.currentTarget as HTMLElement).style.borderColor = 'rgba(254,104,20,0.1)';
+                      }}
+                    >
+                      <div
+                        className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
+                        style={{ background: 'rgba(254,104,20,0.08)', border: '1px solid rgba(254,104,20,0.15)' }}
+                      >
+                        <Icon className="w-4 h-4" style={{ color: '#FE6814' } as React.CSSProperties} />
+                      </div>
+                      <div>
+                        <p style={labelStyle}>{item.label}</p>
+                        {item.href ? (
+                          <a
+                            href={item.href}
+                            className="text-sm font-medium transition-colors"
+                            style={{ color: '#F0F4FF' }}
+                            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#FE6814'; }}
+                            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#F0F4FF'; }}
+                          >
+                            {item.content}
+                          </a>
+                        ) : (
+                          <p className="text-sm font-medium" style={{ color: '#F0F4FF' }}>{item.content}</p>
+                        )}
+                      </div>
+                    </div>
+                  </Reveal>
+                );
+              })}
             </div>
 
-            <div className="max-w-[1280px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
-                <div className="flex flex-col h-full pt-10">
-                    <Reveal>
-                        <div className="mb-12">
-                            <h2 className="text-4xl md:text-5xl lg:text-[56px] font-extrabold tracking-tight leading-tight text-white mb-6">
-                                Contactez-Nous
-                            </h2>
-                            <p className="text-lg md:text-xl text-slate-400 font-normal leading-relaxed max-w-md">
-                                Prêt à démarrer votre projet digital ? Discutons de vos ambitions et construisons l'avenir ensemble.
-                            </p>
-                        </div>
-                    </Reveal>
+            {/* WhatsApp CTA */}
+            <Reveal delay={0.4}>
+              <a
+                href="https://wa.me/22666220025"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-full text-sm font-semibold transition-all duration-300 hover:scale-105"
+                style={{
+                  fontFamily: 'Syne, sans-serif',
+                  background: 'rgba(37,211,102,0.1)',
+                  border: '1px solid rgba(37,211,102,0.3)',
+                  color: '#25D366',
+                }}
+              >
+                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+                </svg>
+                Écrire sur WhatsApp
+              </a>
+            </Reveal>
+          </div>
 
-                    <div className="space-y-10">
-                        <Reveal delay={0.2} variant="slide-left" width="100%">
-                            <div className="flex items-start gap-6 group">
-                                <div className="flex items-center justify-center shrink-0 w-12 h-12 rounded-full bg-[#001529] border border-white/10 text-[#FF6F00] shadow-lg group-hover:scale-110 transition-transform duration-300">
-                                    <MapPin className="w-6 h-6" />
-                                </div>
-                                <div className="flex flex-col">
-                                    <p className="text-slate-400 text-sm font-medium uppercase tracking-wider mb-1">
-                                        Notre Adresse
-                                    </p>
-                                    <p className="text-white text-lg font-medium leading-normal">
-                                        {contact.address.city},<br />{contact.address.country}
-                                    </p>
-                                </div>
-                            </div>
-                        </Reveal>
-
-                        <Reveal delay={0.3} variant="slide-left" width="100%">
-                            <div className="flex items-start gap-6 group">
-                                <div className="flex items-center justify-center shrink-0 w-12 h-12 rounded-full bg-[#001529] border border-white/10 text-[#FF6F00] shadow-lg group-hover:scale-110 transition-transform duration-300">
-                                    <Phone className="w-6 h-6" />
-                                </div>
-                                <div className="flex flex-col">
-                                    <p className="text-slate-400 text-sm font-medium uppercase tracking-wider mb-1">
-                                        Hotline
-                                    </p>
-                                    <div className="flex flex-col gap-1">
-                                        {contact.phones.map((phone) => (
-                                            <a
-                                                key={phone}
-                                                href={`tel:${phone.replace(/\s/g, '')}`}
-                                                className="text-white text-lg font-medium leading-normal hover:text-[#FF6F00] transition-colors"
-                                            >
-                                                {phone}
-                                            </a>
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-                        </Reveal>
-
-                        <Reveal delay={0.4} variant="slide-left" width="100%">
-                            <div className="flex items-start gap-6 group">
-                                <div className="flex items-center justify-center shrink-0 w-12 h-12 rounded-full bg-[#001529] border border-white/10 text-[#FF6F00] shadow-lg group-hover:scale-110 transition-transform duration-300">
-                                    <Mail className="w-6 h-6" />
-                                </div>
-                                <div className="flex flex-col">
-                                    <p className="text-slate-400 text-sm font-medium uppercase tracking-wider mb-1">
-                                        Email
-                                    </p>
-                                    <a
-                                        href={`mailto:${contact.email}`}
-                                        className="text-white text-lg font-medium leading-normal hover:text-[#FF6F00] transition-colors"
-                                    >
-                                        {contact.email}
-                                    </a>
-                                </div>
-                            </div>
-                        </Reveal>
-                    </div>
+          {/* Right: Form */}
+          <Reveal delay={0.2} direction="right" width="100%">
+            <div
+              className="rounded-2xl p-7 md:p-9"
+              style={{
+                background: '#010B1A',
+                border: '1px solid rgba(254,104,20,0.15)',
+              }}
+            >
+              {submitted ? (
+                <div className="text-center py-12">
+                  <div
+                    className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-5"
+                    style={{ background: 'rgba(254,104,20,0.1)', border: '1px solid rgba(254,104,20,0.3)' }}
+                  >
+                    <Mail className="w-6 h-6" style={{ color: '#FE6814' } as React.CSSProperties} />
+                  </div>
+                  <h3
+                    className="text-xl font-bold mb-3"
+                    style={{ fontFamily: 'Syne, sans-serif', color: '#F0F4FF' }}
+                  >
+                    Message envoyé !
+                  </h3>
+                  <p className="text-sm mb-6" style={{ color: '#6B8CAE' }}>
+                    Votre client email devrait s'ouvrir. Sinon, écrivez-nous directement à{' '}
+                    <a href={`mailto:${contact.email}`} style={{ color: '#FE6814' }}>
+                      {contact.email}
+                    </a>
+                  </p>
+                  <button
+                    onClick={() => setSubmitted(false)}
+                    className="text-xs font-semibold transition-colors"
+                    style={{ color: 'rgba(254,104,20,0.7)', fontFamily: 'Syne, sans-serif' }}
+                    onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#FE6814'; }}
+                    onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = 'rgba(254,104,20,0.7)'; }}
+                  >
+                    Envoyer un autre message
+                  </button>
                 </div>
-
-                <Reveal delay={0.2} variant="fade-in" width="100%">
-                    <div className="relative w-full">
-                        <div className="glass-card rounded-[2.5rem] p-8 md:p-12 w-full relative z-10">
-                            {submitted ? (
-                                <div className="text-center py-12">
-                                    <div className="w-16 h-16 bg-[#FF6F00]/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                                        <Mail className="w-8 h-8 text-[#FF6F00]" />
-                                    </div>
-                                    <h3 className="text-2xl font-bold text-white mb-4">Merci !</h3>
-                                    <p className="text-slate-400">
-                                        Votre client email devrait s'ouvrir. Si ce n'est pas le cas, envoyez-nous un email directement à{' '}
-                                        <a href={`mailto:${contact.email}`} className="text-[#FF6F00] hover:underline">
-                                            {contact.email}
-                                        </a>
-                                    </p>
-                                    <Button
-                                        onClick={() => setSubmitted(false)}
-                                        variant="ghost"
-                                        size="md"
-                                        className="mt-6"
-                                    >
-                                        Envoyer un autre message
-                                    </Button>
-                                </div>
-                            ) : (
-                                <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-                                    <Input
-                                        type="text"
-                                        name="name"
-                                        label="Nom"
-                                        placeholder="Votre nom complet"
-                                        value={formData.name}
-                                        onChange={handleChange}
-                                        required
-                                    />
-                                    <Input
-                                        type="email"
-                                        name="email"
-                                        label="Email"
-                                        placeholder="nom@entreprise.com"
-                                        value={formData.email}
-                                        onChange={handleChange}
-                                        required
-                                    />
-                                    <Input
-                                        type="tel"
-                                        name="phone"
-                                        label="Téléphone"
-                                        placeholder="+226 XX XX XX XX"
-                                        value={formData.phone}
-                                        onChange={handleChange}
-                                        required
-                                    />
-                                    <Textarea
-                                        name="message"
-                                        label="Message"
-                                        placeholder="Décrivez votre projet..."
-                                        rows={4}
-                                        value={formData.message}
-                                        onChange={handleChange}
-                                        required
-                                    />
-                                    <div className="pt-4">
-                                        <Button
-                                            type="submit"
-                                            variant="primary"
-                                            size="lg"
-                                            isLoading={isSubmitting}
-                                            icon={<ArrowUpRight className="w-5 h-5" />}
-                                            className="w-full"
-                                        >
-                                            Envoyer mon projet
-                                        </Button>
-                                    </div>
-                                </form>
-                            )}
-                        </div>
-                        <div className="absolute -top-10 -right-10 w-32 h-32 bg-[#FF6F00]/20 rounded-full blur-3xl -z-0" />
-                    </div>
-                </Reveal>
+              ) : (
+                <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+                  <div>
+                    <label style={labelStyle}>Nom complet</label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      placeholder="Votre nom complet"
+                      required
+                      style={inputBase}
+                      onFocus={(e) => { (e.currentTarget as HTMLInputElement).style.borderColor = 'rgba(254,104,20,0.5)'; }}
+                      onBlur={(e) => { (e.currentTarget as HTMLInputElement).style.borderColor = 'rgba(254,104,20,0.15)'; }}
+                    />
+                  </div>
+                  <div>
+                    <label style={labelStyle}>Email</label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      placeholder="nom@entreprise.com"
+                      required
+                      style={inputBase}
+                      onFocus={(e) => { (e.currentTarget as HTMLInputElement).style.borderColor = 'rgba(254,104,20,0.5)'; }}
+                      onBlur={(e) => { (e.currentTarget as HTMLInputElement).style.borderColor = 'rgba(254,104,20,0.15)'; }}
+                    />
+                  </div>
+                  <div>
+                    <label style={labelStyle}>Téléphone</label>
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      placeholder="+226 XX XX XX XX"
+                      style={inputBase}
+                      onFocus={(e) => { (e.currentTarget as HTMLInputElement).style.borderColor = 'rgba(254,104,20,0.5)'; }}
+                      onBlur={(e) => { (e.currentTarget as HTMLInputElement).style.borderColor = 'rgba(254,104,20,0.15)'; }}
+                    />
+                  </div>
+                  <div>
+                    <label style={labelStyle}>Message</label>
+                    <textarea
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      placeholder="Décrivez votre projet..."
+                      required
+                      rows={4}
+                      style={{ ...inputBase, resize: 'vertical', minHeight: '110px' }}
+                      onFocus={(e) => { (e.currentTarget as HTMLTextAreaElement).style.borderColor = 'rgba(254,104,20,0.5)'; }}
+                      onBlur={(e) => { (e.currentTarget as HTMLTextAreaElement).style.borderColor = 'rgba(254,104,20,0.15)'; }}
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    disabled={submitting}
+                    className="w-full py-3.5 rounded-xl font-bold text-sm transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-60"
+                    style={{
+                      fontFamily: 'Syne, sans-serif',
+                      background: '#FE6814',
+                      color: '#ffffff',
+                    }}
+                  >
+                    {submitting ? 'Envoi...' : 'Envoyer mon projet →'}
+                  </button>
+                </form>
+              )}
             </div>
-        </section>
-    );
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default ContactSection;

@@ -1,65 +1,135 @@
-import FAQCard from '../cards/FAQCard';
+import { useState } from 'react';
 import { faqs } from '../../data/faqs';
-import Button from '../ui/Button';
 import Reveal from '../ui/Reveal';
 
-import { useState } from 'react';
+const FAQItem = ({ faq, index }: { faq: typeof faqs[0]; index: number }) => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <Reveal delay={index * 0.07} width="100%">
+      <button
+        onClick={() => setOpen(!open)}
+        className="w-full text-left group"
+        aria-expanded={open}
+      >
+        <div
+          className="rounded-xl p-5 transition-all duration-300"
+          style={{
+            background: open ? 'rgba(254,104,20,0.05)' : '#002248',
+            border: `1px solid ${open ? 'rgba(254,104,20,0.3)' : 'rgba(254,104,20,0.1)'}`,
+          }}
+        >
+          {/* Question row */}
+          <div className="flex items-start justify-between gap-4">
+            <span
+              className="font-semibold text-sm leading-relaxed"
+              style={{
+                fontFamily: 'Syne, sans-serif',
+                color: open ? '#FE6814' : '#F0F4FF',
+              }}
+            >
+              {faq.question}
+            </span>
+            <span
+              className="shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold transition-all duration-300 mt-0.5"
+              style={{
+                background: open ? '#FE6814' : 'rgba(254,104,20,0.1)',
+                color: open ? '#010B1A' : '#FE6814',
+                transform: open ? 'rotate(45deg)' : 'rotate(0deg)',
+              }}
+            >
+              +
+            </span>
+          </div>
+
+          {/* Answer */}
+          <div
+            className="overflow-hidden transition-all duration-400"
+            style={{
+              maxHeight: open ? '300px' : '0px',
+              opacity: open ? 1 : 0,
+            }}
+          >
+            <p
+              className="text-sm leading-relaxed pt-4"
+              style={{ color: '#6B8CAE' }}
+            >
+              {faq.answer}
+            </p>
+          </div>
+        </div>
+      </button>
+    </Reveal>
+  );
+};
 
 const FAQSection = () => {
-    const [activeId, setActiveId] = useState<string | null>(null);
+  const half = Math.ceil(faqs.length / 2);
+  const col1 = faqs.slice(0, half);
+  const col2 = faqs.slice(half);
 
-    const handleToggle = (id: string) => {
-        setActiveId(activeId === id ? null : id);
-    };
-    return (
-        <section id="faq" className="relative w-full py-12 lg:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
-            <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.05]" style={{
-                backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)',
-                backgroundSize: '40px 40px',
-            }} />
+  return (
+    <section id="faq" className="relative py-24 lg:py-32 overflow-hidden">
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            'radial-gradient(ellipse 50% 50% at 50% 100%, rgba(254,104,20,0.04) 0%, transparent 70%)',
+        }}
+      />
 
-            <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-[#FF6F00] rounded-full mix-blend-multiply filter blur-[100px] opacity-10" />
-            <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-[100px] opacity-10" />
-
-            <div className="relative z-10 max-w-6xl mx-auto w-full">
-                <Reveal width="100%">
-                    <div className="text-center mb-16 space-y-4">
-                        <span className="inline-block py-1 px-3 rounded-full bg-[#FF6F00]/10 text-[#FF6F00] text-sm font-semibold tracking-wide uppercase">
-                            (FAQ)
-                        </span>
-                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight">
-                            Vos Questions, <span className="text-[#FF6F00]">Nos Réponses.</span>
-                        </h2>
-                        <p className="text-lg text-slate-300 max-w-2xl mx-auto font-light">
-                            Découvrez comment DigiFlow transforme votre vision numérique en réalité à travers nos questions les plus fréquentes.
-                        </p>
-                    </div>
-                </Reveal>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-                    {faqs.map((faq, index) => (
-                        <Reveal key={faq.id} delay={index * 0.1} variant="slide-left" width="100%">
-                            <FAQCard
-                                faq={faq}
-                                isFullWidth={index === faqs.length - 1 && faqs.length % 2 !== 0}
-                                isActive={activeId === faq.id}
-                                onToggle={() => handleToggle(faq.id)}
-                            />
-                        </Reveal>
-                    ))}
-                </div>
-
-                <Reveal delay={0.4} width="100%">
-                    <div className="mt-16 text-center">
-                        <p className="text-slate-400 mb-6">Vous avez d'autres questions ?</p>
-                        <Button href="#contact" variant="primary" size="lg">
-                            Contactez-nous
-                        </Button>
-                    </div>
-                </Reveal>
+      <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
+        {/* Header */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-16">
+          <Reveal>
+            <div>
+              <span className="section-label block mb-3">FAQ</span>
+              <h2
+                className="text-[clamp(2rem,5vw,3.5rem)] font-bold tracking-tight leading-tight"
+                style={{ fontFamily: 'Syne, sans-serif', color: '#F0F4FF' }}
+              >
+                Vos questions,{' '}
+                <span style={{ color: '#FE6814' }}>nos réponses</span>
+              </h2>
             </div>
-        </section>
-    );
+          </Reveal>
+          <Reveal delay={0.15}>
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-1.5 text-sm font-semibold transition-all duration-300 group"
+              style={{ fontFamily: 'Syne, sans-serif', color: 'rgba(254,104,20,0.7)' }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#FE6814'; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = 'rgba(254,104,20,0.7)'; }}
+            >
+              Autre question ?
+              <svg
+                className="w-4 h-4 transition-transform group-hover:translate-x-0.5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+          </Reveal>
+        </div>
+
+        {/* 2-column accordion */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div className="flex flex-col gap-3">
+            {col1.map((faq, i) => (
+              <FAQItem key={faq.id} faq={faq} index={i} />
+            ))}
+          </div>
+          <div className="flex flex-col gap-3">
+            {col2.map((faq, i) => (
+              <FAQItem key={faq.id} faq={faq} index={i + half} />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default FAQSection;

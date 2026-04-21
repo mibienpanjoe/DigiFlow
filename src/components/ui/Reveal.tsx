@@ -1,76 +1,74 @@
-import { useRef, useEffect } from 'react';
-import { motion, useInView, useAnimation } from 'motion/react';
+import { useRef } from 'react';
+import { motion, useInView, type Variants } from 'motion/react';
 
 interface RevealProps {
-    children: React.ReactNode;
-    width?: 'fit-content' | '100%';
-    delay?: number;
-    duration?: number;
-    variant?: 'fade-up' | 'fade-in' | 'slide-left' | 'slide-right' | 'zoom-in';
-    className?: string; // Allow passing classes for layout
+  children: React.ReactNode;
+  delay?: number;
+  duration?: number;
+  direction?: 'up' | 'left' | 'right' | 'none';
+  className?: string;
+  width?: 'fit-content' | '100%';
+  variant?: 'fade-up' | 'fade-in' | 'slide-left' | 'slide-right' | 'zoom-in';
 }
 
-export const Reveal = ({
-    children,
-    width = 'fit-content',
-    delay = 0,
-    duration = 0.5,
-    variant = 'fade-up',
-    className = ""
+const directionMap = {
+  up: { y: 40, x: 0 },
+  left: { y: 0, x: -40 },
+  right: { y: 0, x: 40 },
+  none: { y: 0, x: 0 },
+};
+
+const variantMap: Record<string, Variants> = {
+  'fade-in': {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
+  },
+  'slide-left': {
+    hidden: { opacity: 0, x: -50 },
+    visible: { opacity: 1, x: 0 },
+  },
+  'slide-right': {
+    hidden: { opacity: 0, x: 50 },
+    visible: { opacity: 1, x: 0 },
+  },
+  'zoom-in': {
+    hidden: { opacity: 0, scale: 0.85 },
+    visible: { opacity: 1, scale: 1 },
+  },
+};
+
+const Reveal = ({
+  children,
+  delay = 0,
+  duration = 0.6,
+  direction = 'up',
+  className = '',
+  width = 'fit-content',
+  variant,
 }: RevealProps) => {
-    const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, margin: "-50px" });
-    const controls = useAnimation();
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-60px' });
 
-    useEffect(() => {
-        if (isInView) {
-            controls.start("visible");
-        }
-    }, [isInView, controls]);
+  const resolvedVariant = variant
+    ? variantMap[variant] ?? { hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0 } }
+    : {
+        hidden: { opacity: 0, ...directionMap[direction] },
+        visible: { opacity: 1, y: 0, x: 0 },
+      };
 
-    const getVariants = () => {
-        switch (variant) {
-            case 'fade-in':
-                return {
-                    hidden: { opacity: 0 },
-                    visible: { opacity: 1 },
-                };
-            case 'slide-left':
-                return {
-                    hidden: { opacity: 0, x: -75 },
-                    visible: { opacity: 1, x: 0 },
-                };
-            case 'slide-right':
-                return {
-                    hidden: { opacity: 0, x: 75 },
-                    visible: { opacity: 1, x: 0 },
-                };
-            case 'zoom-in':
-                return {
-                    hidden: { opacity: 0, scale: 0.8 },
-                    visible: { opacity: 1, scale: 1 },
-                };
-            case 'fade-up':
-            default:
-                return {
-                    hidden: { opacity: 0, y: 50 },
-                    visible: { opacity: 1, y: 0 },
-                };
-        }
-    };
-
-    return (
-        <div ref={ref} style={{ position: 'relative', width }} className={className}>
-            <motion.div
-                variants={getVariants()}
-                initial="hidden"
-                animate={controls}
-                transition={{ duration, delay, ease: "easeOut" }}
-            >
-                {children}
-            </motion.div>
-        </div>
-    );
+  return (
+    <div ref={ref} className={className} style={{ width, height: className.includes('h-full') ? '100%' : undefined }}>
+      <motion.div
+        style={{ height: className.includes('h-full') ? '100%' : undefined }}
+        variants={resolvedVariant}
+        initial="hidden"
+        animate={isInView ? 'visible' : 'hidden'}
+        transition={{ duration, delay, ease: [0.25, 0.1, 0.25, 1] }}
+      >
+        {children}
+      </motion.div>
+    </div>
+  );
 };
 
 export default Reveal;

@@ -1,74 +1,142 @@
-import { BadgeCheck, ArrowUpRight } from 'lucide-react';
-import Button from '../ui/Button';
+import { useRef } from 'react';
+import { motion, useInView } from 'motion/react';
 import Reveal from '../ui/Reveal';
-import CountUp from '../ui/CountUp';
 
 const stats = [
-    { value: 10, suffix: 'M+', label: 'Réactions & Trafic' },
-    { value: 99, suffix: '%', label: 'Satisfaction Clients' },
-    { value: 50, suffix: '+', label: 'Projets Réalisés' },
+  { value: '10M', suffix: '+', label: 'Réactions & Trafic', sub: 'générées pour nos clients' },
+  { value: '99', suffix: '%', label: 'Satisfaction', sub: 'taux de clients satisfaits' },
+  { value: '50', suffix: '+', label: 'Projets', sub: 'livrés avec excellence' },
 ];
 
+const StatNumber = ({ stat, delay }: { stat: (typeof stats)[0]; delay: number }) => {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: '-80px' });
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 30 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.7, delay, ease: [0.25, 0.1, 0.25, 1] }}
+      className="group"
+    >
+      <div className="flex items-start gap-0.5">
+        <span
+          className="text-[clamp(2rem,7vw,6.5rem)] font-black leading-none tracking-tighter"
+          style={{ fontFamily: 'Syne, sans-serif', color: '#FE6814' }}
+        >
+          {stat.value}
+        </span>
+        <span
+          className="text-[clamp(0.9rem,3vw,2.5rem)] font-black mt-1 sm:mt-2"
+          style={{ fontFamily: 'Syne, sans-serif', color: '#FE6814' }}
+        >
+          {stat.suffix}
+        </span>
+      </div>
+      <div className="mt-1 mb-1 w-8 h-px" style={{ background: 'rgba(254,104,20,0.4)' }} />
+      <p className="font-semibold text-cream text-sm uppercase tracking-wider" style={{ fontFamily: 'Syne, sans-serif' }}>
+        {stat.label}
+      </p>
+      <p className="text-muted text-xs mt-0.5">{stat.sub}</p>
+    </motion.div>
+  );
+};
+
 const AboutSection = () => {
-    return (
-        <section id="about" className="relative py-12 lg:py-20 overflow-hidden">
-            <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-[#FF6F00]/10 rounded-full blur-[100px] pointer-events-none z-0" />
+  return (
+    <section id="about" className="relative py-16 sm:py-24 lg:py-32 overflow-hidden">
+      {/* Background accent */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            'radial-gradient(ellipse 50% 60% at 20% 50%, rgba(254,104,20,0.04) 0%, transparent 70%)',
+        }}
+      />
 
-            <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex flex-col items-center gap-14 max-w-[1080px] mx-auto">
-                    <Reveal>
-                        <div className="flex justify-center">
-                            <div className="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full border border-white/10 bg-black/30 backdrop-blur-md px-5 shadow-lg">
-                                <BadgeCheck className="w-[18px] h-[18px] text-[#FF6F00]" />
-                                <p className="text-white/90 text-sm font-medium leading-normal tracking-wide">À Propos de Nous</p>
-                            </div>
-                        </div>
-                    </Reveal>
+      <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
+        {/* Section label */}
+        <Reveal className="mb-10 sm:mb-16">
+          <span className="section-label">À Propos de Nous</span>
+        </Reveal>
 
-                    <Reveal delay={0.2}>
-                        <div className="flex flex-col gap-6 text-center max-w-[900px]">
-                            <h2 className="text-white tracking-tight text-3xl md:text-5xl lg:text-6xl font-semibold leading-[1.2]">
-                                Bâtie sur la créativité et l'excellence,{' '}
-                                <span className="text-[#FF6F00] text-glow">DigiFlow</span>{' '}
-                                est une équipe dynamique d'experts engagés à obtenir des résultats exceptionnels pour la transformation digitale au Burkina Faso...
-                            </h2>
-                        </div>
-                    </Reveal>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-24 items-start">
+          {/* Left: Stats */}
+          <div className="grid grid-cols-3 lg:flex lg:flex-col gap-6 lg:gap-10">
+            {stats.map((stat, i) => (
+              <StatNumber key={stat.label} stat={stat} delay={i * 0.15} />
+            ))}
+          </div>
 
-                    <div className="w-full py-6">
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12 text-center">
-                            {stats.map((stat, index) => (
-                                <Reveal key={stat.label} delay={0.3 + (index * 0.1)} variant="zoom-in" width="100%">
-                                    <div className="flex flex-col items-center gap-4">
-                                        <div className="text-5xl md:text-6xl font-bold text-[#FF6F00] text-glow font-display">
-                                            <CountUp to={stat.value} suffix={stat.suffix} />
-                                        </div>
-                                        <div className="w-12 h-1 bg-[#FF6F00]/30 rounded-full" />
-                                        <p className="text-lg text-slate-300 font-medium tracking-wide uppercase">{stat.label}</p>
-                                    </div>
-                                </Reveal>
-                            ))}
-                        </div>
-                    </div>
+          {/* Right: Mission text */}
+          <div className="flex flex-col gap-6 lg:gap-8 lg:pt-4">
+            <Reveal delay={0.1}>
+              <h2
+                className="text-[clamp(1.8rem,4vw,3rem)] font-bold leading-tight tracking-tight text-cream"
+                style={{ fontFamily: 'Syne, sans-serif' }}
+              >
+                Bâtie sur la créativité et l'excellence au{' '}
+                <span style={{ color: '#FE6814' }}>Burkina Faso.</span>
+              </h2>
+            </Reveal>
 
-                    <Reveal delay={0.6}>
-                        <div className="flex justify-center pt-2">
-                            <Button
-                                href="#contact"
-                                variant="primary"
-                                size="lg"
-                                icon={<ArrowUpRight className="w-5 h-5" />}
-                                className="group relative overflow-hidden"
-                            >
-                                <span>Prendre Rendez-vous</span>
-                                <div className="absolute inset-0 -translate-x-full group-hover:animate-shimmer bg-gradient-to-r from-transparent via-white/20 to-transparent z-10 w-full h-full skew-x-12" />
-                            </Button>
-                        </div>
-                    </Reveal>
-                </div>
-            </div>
-        </section>
-    );
+            <Reveal delay={0.2}>
+              <p className="text-base leading-relaxed" style={{ color: '#6B8CAE' }}>
+                DigiFlow est une équipe dynamique d'experts engagés à obtenir des résultats
+                exceptionnels. Nous accompagnons les entreprises burkinabè dans leur transformation
+                digitale avec une approche locale, créative et orientée performance.
+              </p>
+            </Reveal>
+
+            <Reveal delay={0.3}>
+              <p className="text-base leading-relaxed" style={{ color: '#6B8CAE' }}>
+                Notre force : comprendre votre marché, votre culture, vos clients — mieux que
+                n'importe quelle agence internationale ne pourrait le faire.
+              </p>
+            </Reveal>
+
+            <Reveal delay={0.4}>
+              <div className="flex flex-wrap gap-3 pt-2">
+                {['Stratégie', 'Créativité', 'Performance', 'Proximité'].map((tag) => (
+                  <span
+                    key={tag}
+                    className="px-3 py-1 text-xs font-semibold uppercase tracking-widest rounded-full"
+                    style={{
+                      fontFamily: 'Syne, sans-serif',
+                      border: '1px solid rgba(254,104,20,0.2)',
+                      color: '#FE6814',
+                      background: 'rgba(254,104,20,0.05)',
+                    }}
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.5}>
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-2 mt-2 font-semibold text-sm transition-all duration-300 group"
+                style={{ fontFamily: 'Syne, sans-serif', color: '#FE6814' }}
+              >
+                Prendre Rendez-vous
+                <svg
+                  className="w-4 h-4 transition-transform group-hover:translate-x-1"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
+            </Reveal>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default AboutSection;
