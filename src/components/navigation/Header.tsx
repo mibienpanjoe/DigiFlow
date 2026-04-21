@@ -38,7 +38,10 @@ const Header = () => {
           {/* Logo */}
           <a href="#home" className="flex items-center gap-2.5 group">
             <div className="h-8 w-8 rounded-full bg-white flex items-center justify-center p-0.5 ring-1 ring-gold/30 transition-all group-hover:ring-gold/60">
-              <img src="/logo.svg" alt="DigiFlow" className="h-full w-full object-contain" />
+              <picture>
+                <source srcSet="/logo.webp" type="image/webp" />
+                <img src="/logo-128.png" alt="DigiFlow" className="h-full w-full object-contain" width="128" height="128" />
+              </picture>
             </div>
             <span
               className="font-display font-bold text-base tracking-tight text-cream"
