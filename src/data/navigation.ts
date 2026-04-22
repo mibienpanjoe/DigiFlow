@@ -20,11 +20,12 @@ export const footerQuickLinks: NavLink[] = [
 ];
 
 export const footerServiceLinks: NavLink[] = [
-  { label: 'Marketing Digital', href: '#services' },
+  { label: 'Gestion de page Facebook', href: '#services' },
   { label: 'Développement Web', href: '#services' },
   { label: 'Design Graphique', href: '#services' },
-  { label: 'Création Contenu', href: '#services' },
-  { label: 'Rédaction Pro', href: '#services' },
+  { label: 'Vidéo Publicitaire', href: '#services' },
+  { label: 'Applications Sur Mesure', href: '#services' },
+  { label: 'Rédaction de Mémoire', href: '#services' },
 ];
 
 export const legalLinks: NavLink[] = [

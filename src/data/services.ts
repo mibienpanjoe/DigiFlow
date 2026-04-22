@@ -9,12 +9,12 @@ export interface Service {
 
 export const services: Service[] = [
   {
-    id: 'marketing',
-    title: 'Marketing',
-    subtitle: 'Digital',
-    description: 'Propulsez votre marque avec des stratégies ciblées. Nous transformons vos visiteurs en clients fidèles grâce à des campagnes ROIstes.',
-    features: ['SEO & SEA', 'Réseaux Sociaux', 'Email Marketing'],
-    icon: 'TrendingUp',
+    id: 'facebook',
+    title: 'Gestion de page',
+    subtitle: 'Facebook',
+    description: 'Nous gérons la page Facebook de votre entreprise ou boutique pour attirer plus de visiteurs, engager votre communauté et transformer les abonnés en clients.',
+    features: ['Publication & Planification', 'Croissance d\'audience', 'Conversion & Ventes'],
+    icon: 'Share2',
   },
   {
     id: 'web',
@@ -34,18 +34,26 @@ export const services: Service[] = [
   },
   {
     id: 'content',
-    title: 'Création de',
-    subtitle: 'Contenu',
-    description: 'Racontez votre histoire à travers des visuels captivants — production vidéo, photographie professionnelle et motion design.',
-    features: ['Montage Vidéo', 'Motion Design', 'Photographie Produit'],
+    title: 'Création de Vidéo',
+    subtitle: 'Publicitaire',
+    description: 'Nous créons des vidéos publicitaires percutantes pour mettre en valeur vos produits ou services — du spot promotionnel au contenu UGC généré par IA pour maximiser votre portée.',
+    features: ['Spots Publicitaires', 'UGC Vidéo par IA', 'Montage & Motion Design'],
     icon: 'Film',
   },
   {
+    id: 'apps',
+    title: 'Applications',
+    subtitle: 'Sur Mesure',
+    description: 'Nous concevons des logiciels et applications adaptés aux besoins internes de votre entreprise — système de gestion scolaire, tableau de bord métier ou plateforme web personnalisée.',
+    features: ['Systèmes de Gestion', 'Applications Web Métier', 'Tableaux de Bord & Reporting'],
+    icon: 'Cpu',
+  },
+  {
     id: 'writing',
-    title: 'Rédaction',
-    subtitle: 'Professionnelle',
-    description: 'Les mots justes pour convaincre. Copywriting, storytelling et rédaction web SEO pour une voix unique et percutante.',
-    features: ['Copywriting & Slogans', 'Articles Blog SEO', 'Newsletters'],
+    title: 'Rédaction de',
+    subtitle: 'Mémoire',
+    description: 'Nous accompagnons les étudiants dans la rédaction de leur mémoire de fin d\'études — structure, argumentation et mise en forme pour un travail qui convaincra le jury.',
+    features: ['Rédaction & Structure', 'Recherche Documentaire', 'Correction & Mise en Forme'],
     icon: 'PenLine',
   },
 ];

@@ -1,17 +1,18 @@
-import { TrendingUp, Code2, Palette, Film, PenLine, CheckCircle2 } from 'lucide-react';
+import { Share2, Code2, Palette, Film, PenLine, Cpu, CheckCircle2 } from 'lucide-react';
 import { services } from '../../data/services';
 import Reveal from '../ui/Reveal';
 
 const iconMap: Record<string, React.FC<{ className?: string; style?: React.CSSProperties }>> = {
-  TrendingUp,
+  Share2,
   Code2,
   Palette,
   Film,
   PenLine,
+  Cpu,
 };
 
 const ServiceCard = ({ service, index }: { service: typeof services[0]; index: number }) => {
-  const Icon = iconMap[service.icon] ?? TrendingUp;
+  const Icon = iconMap[service.icon] ?? Share2;
 
   return (
     <Reveal delay={index * 0.08} width="100%">
