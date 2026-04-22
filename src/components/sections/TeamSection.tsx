@@ -64,18 +64,6 @@ const TeamSection = () => {
                       }}
                     />
 
-                    {/* Number tag */}
-                    <div
-                      className="absolute top-3 left-3 w-7 h-7 flex items-center justify-center text-xs font-bold rounded-full"
-                      style={{
-                        fontFamily: 'Syne, sans-serif',
-                        background: 'rgba(254,104,20,0.9)',
-                        color: '#010B1A',
-                      }}
-                    >
-                      {String(i + 1).padStart(2, '0')}
-                    </div>
-
                     {/* WhatsApp button */}
                     <a
                       href={member.whatsapp}

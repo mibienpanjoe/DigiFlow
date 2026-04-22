@@ -129,10 +129,12 @@ const ServicesSection = () => {
           </Reveal>
         </div>
 
-        {/* Cards grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {/* Cards — horizontal scroll on mobile, grid on desktop */}
+        <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-6 -mx-6 px-6 scrollbar-hide md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-4 md:overflow-visible md:pb-0 md:mx-0 md:px-0">
           {services.map((service, i) => (
-            <ServiceCard key={service.id} service={service} index={i} />
+            <div key={service.id} className="min-w-[82vw] sm:min-w-[55vw] md:min-w-0 snap-center">
+              <ServiceCard service={service} index={i} />
+            </div>
           ))}
         </div>
       </div>
