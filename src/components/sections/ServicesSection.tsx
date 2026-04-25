@@ -15,7 +15,7 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
   const Icon = iconMap[service.icon] ?? Share2;
 
   return (
-    <Reveal delay={index * 0.08} width="100%">
+    <Reveal delay={index * 0.08} width="100%" viewMargin="0px">
       <div
         className="group relative flex flex-col h-full p-7 rounded-2xl transition-all duration-400 cursor-default"
         style={{
@@ -117,14 +117,14 @@ const ServicesSection = () => {
                 className="text-[clamp(2rem,5vw,3.5rem)] font-bold tracking-tight leading-tight"
                 style={{ fontFamily: 'Syne, sans-serif', color: '#F0F4FF' }}
               >
-                Ce que nous{' '}
-                <span style={{ color: '#FE6814' }}>créons</span>
+                Nos domaines{' '}
+                <span style={{ color: '#FE6814' }}>d'expertise</span>
               </h2>
             </div>
           </Reveal>
           <Reveal delay={0.15}>
             <p className="text-sm max-w-xs leading-relaxed" style={{ color: '#6B8CAE' }}>
-              Cinq expertises complémentaires pour couvrir l'intégralité de votre présence digitale.
+              Six expertises complémentaires pour couvrir l'intégralité de votre présence digitale.
             </p>
           </Reveal>
         </div>
@@ -132,7 +132,7 @@ const ServicesSection = () => {
         {/* Cards — horizontal scroll on mobile, grid on desktop */}
         <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-6 -mx-6 px-6 scrollbar-hide md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-4 md:overflow-visible md:pb-0 md:mx-0 md:px-0">
           {services.map((service, i) => (
-            <div key={service.id} className="min-w-[82vw] sm:min-w-[55vw] md:min-w-0 snap-center">
+            <div key={service.id} className="min-w-[78vw] sm:min-w-[52vw] md:min-w-0 snap-center">
               <ServiceCard service={service} index={i} />
             </div>
           ))}

@@ -9,6 +9,7 @@ interface RevealProps {
   className?: string;
   width?: 'fit-content' | '100%';
   variant?: 'fade-up' | 'fade-in' | 'slide-left' | 'slide-right' | 'zoom-in';
+  viewMargin?: string;
 }
 
 const directionMap = {
@@ -45,9 +46,10 @@ const Reveal = ({
   className = '',
   width = 'fit-content',
   variant,
+  viewMargin = '-60px',
 }: RevealProps) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-60px' });
+  const isInView = useInView(ref, { once: true, margin: viewMargin as `${number}px` });
 
   const resolvedVariant = variant
     ? variantMap[variant] ?? { hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0 } }

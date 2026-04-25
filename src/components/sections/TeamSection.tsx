@@ -52,16 +52,7 @@ const TeamSection = () => {
                     <img
                       src={member.image}
                       alt={member.name}
-                      className="w-full h-full object-cover object-top transition-all duration-700"
-                      style={{
-                        filter: 'grayscale(100%) contrast(1.05)',
-                      }}
-                      onMouseEnter={(e) => {
-                        (e.currentTarget as HTMLImageElement).style.filter = 'grayscale(0%) contrast(1)';
-                      }}
-                      onMouseLeave={(e) => {
-                        (e.currentTarget as HTMLImageElement).style.filter = 'grayscale(100%) contrast(1.05)';
-                      }}
+                      className="w-full h-full object-cover object-top"
                     />
 
                     {/* WhatsApp button */}
