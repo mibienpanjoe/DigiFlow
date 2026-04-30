@@ -69,7 +69,7 @@ const FAQSection = () => {
   const col2 = faqs.slice(half);
 
   return (
-    <section id="faq" className="relative py-24 lg:py-32 overflow-hidden">
+    <section id="faq" className="relative py-12 sm:py-20 lg:py-32 overflow-hidden">
       <div
         className="pointer-events-none absolute inset-0"
         style={{
@@ -80,7 +80,7 @@ const FAQSection = () => {
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-16">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10 sm:mb-16">
           <Reveal>
             <div>
               <span className="section-label block mb-3">FAQ</span>
@@ -92,25 +92,6 @@ const FAQSection = () => {
                 <span style={{ color: '#FE6814' }}>nos réponses</span>
               </h2>
             </div>
-          </Reveal>
-          <Reveal delay={0.15}>
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-1.5 text-sm font-semibold transition-all duration-300 group"
-              style={{ fontFamily: 'Syne, sans-serif', color: 'rgba(254,104,20,0.7)' }}
-              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#FE6814'; }}
-              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = 'rgba(254,104,20,0.7)'; }}
-            >
-              Autre question ?
-              <svg
-                className="w-4 h-4 transition-transform group-hover:translate-x-0.5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </a>
           </Reveal>
         </div>
 

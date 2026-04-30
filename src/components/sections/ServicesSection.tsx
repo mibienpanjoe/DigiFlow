@@ -75,20 +75,10 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
         <div className="mt-auto">
           <a
             href="#contact"
-            className="inline-flex items-center gap-1.5 text-xs font-semibold transition-all duration-300 group/link"
-            style={{ fontFamily: 'Syne, sans-serif', color: 'rgba(254,104,20,0.7)' }}
-            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#FE6814'; }}
-            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = 'rgba(254,104,20,0.7)'; }}
+            className="text-xs font-semibold underline underline-offset-4 decoration-[rgba(254,104,20,0.4)] hover:decoration-[#FE6814] transition-all duration-300"
+            style={{ fontFamily: 'Syne, sans-serif', color: '#FE6814' }}
           >
             En savoir plus
-            <svg
-              className="w-3.5 h-3.5 transition-transform group-hover/link:translate-x-0.5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
           </a>
         </div>
       </div>
@@ -98,7 +88,7 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
 
 const ServicesSection = () => {
   return (
-    <section id="services" className="relative py-24 lg:py-32 overflow-hidden">
+    <section id="services" className="relative py-12 sm:py-20 lg:py-32 overflow-hidden">
       <div
         className="pointer-events-none absolute inset-0"
         style={{
@@ -109,7 +99,7 @@ const ServicesSection = () => {
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-16">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10 sm:mb-16">
           <Reveal>
             <div>
               <span className="section-label block mb-3">Nos Services</span>

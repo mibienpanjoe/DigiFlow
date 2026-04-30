@@ -9,7 +9,7 @@ const WhatsAppIcon = () => (
 
 const TeamSection = () => {
   return (
-    <section id="team" className="relative py-24 lg:py-32 overflow-hidden">
+    <section id="team" className="relative py-12 sm:py-20 lg:py-32 overflow-hidden">
       <div
         className="pointer-events-none absolute inset-0"
         style={{
@@ -20,7 +20,7 @@ const TeamSection = () => {
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 sm:mb-16">
           <Reveal>
             <div>
               <span className="section-label block mb-3">L'Équipe</span>

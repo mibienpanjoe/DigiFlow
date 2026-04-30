@@ -45,7 +45,7 @@ const StatNumber = ({ stat, delay }: { stat: (typeof stats)[0]; delay: number })
 
 const AboutSection = () => {
   return (
-    <section id="about" className="relative py-16 sm:py-24 lg:py-32 overflow-hidden">
+    <section id="about" className="relative py-10 sm:py-16 lg:py-24 overflow-hidden">
       {/* Background accent */}
       <div
         className="pointer-events-none absolute inset-0"
@@ -115,23 +115,6 @@ const AboutSection = () => {
               </div>
             </Reveal>
 
-            <Reveal delay={0.5}>
-              <a
-                href="#contact"
-                className="inline-flex items-center gap-2 mt-2 font-semibold text-sm transition-all duration-300 group"
-                style={{ fontFamily: 'Syne, sans-serif', color: '#FE6814' }}
-              >
-                Prendre Rendez-vous
-                <svg
-                  className="w-4 h-4 transition-transform group-hover:translate-x-1"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </a>
-            </Reveal>
           </div>
         </div>
       </div>

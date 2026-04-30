@@ -3,7 +3,7 @@ import Reveal from '../ui/Reveal';
 
 const PortfolioSection = () => {
   return (
-    <section id="portfolio" className="relative py-24 lg:py-32" style={{ background: '#002248' }}>
+    <section id="portfolio" className="relative py-12 sm:py-20 lg:py-32" style={{ background: '#002248' }}>
       {/* Borders */}
       <div
         className="absolute top-0 left-0 right-0 h-px"
@@ -12,7 +12,7 @@ const PortfolioSection = () => {
 
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-16">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10 sm:mb-16">
           <Reveal>
             <div>
               <span className="section-label block mb-3">Nos Projets</span>

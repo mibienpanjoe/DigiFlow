@@ -45,25 +45,6 @@ const HeroSection = () => {
         }}
       />
 
-      {/* Floating diamond decorations */}
-      <motion.div
-        animate={{ y: [-8, 8, -8], rotate: [0, 15, 0] }}
-        transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute top-1/4 right-[8%] w-3 h-3 rotate-45"
-        style={{ background: 'rgba(254,104,20,0.4)' }}
-      />
-      <motion.div
-        animate={{ y: [8, -12, 8], rotate: [45, 60, 45] }}
-        transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-        className="absolute top-1/3 left-[6%] w-2 h-2 rotate-45"
-        style={{ background: 'rgba(254,104,20,0.5)' }}
-      />
-      <motion.div
-        animate={{ y: [-5, 10, -5] }}
-        transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
-        className="absolute bottom-1/3 right-[12%] w-4 h-4 rotate-45"
-        style={{ border: '1px solid rgba(254,104,20,0.3)' }}
-      />
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8 pt-28 pb-12">
         <motion.div
