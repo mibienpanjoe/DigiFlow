@@ -79,7 +79,6 @@ const HeroSection = () => {
             className="text-[clamp(2.2rem,5vw,4.5rem)] leading-[1.05] font-black tracking-tighter"
             style={{ fontFamily: 'Syne, sans-serif' }}
           >
-            
             <span
               className="block"
               style={{
@@ -87,9 +86,9 @@ const HeroSection = () => {
                 textShadow: '0 0 80px rgba(254,104,20,0.4)',
               }}
             >
-              L'expertise 
+              L'agence digitale
             </span>
-            <span className="block" style={{ color: '#F0F4FF' }}>qui propulse votre  succès</span>
+            <span className="block" style={{ color: '#F0F4FF' }}>qui fait vendre vos produits et services.</span>
           </motion.h1>
 
           {/* Subline + CTAs row */}
@@ -98,7 +97,7 @@ const HeroSection = () => {
             className="mt-10 flex flex-col lg:flex-row lg:items-end gap-8 lg:gap-16"
           >
             <p className="max-w-sm text-base leading-relaxed" style={{ color: '#6B8CAE' }}>
-              Marketing digital, développement web et design graphique — une expertise locale pour un impact global depuis Ouagadougou.
+              Nous aidons les entreprises burkinabè à attirer plus de clients en ligne — avec des sites qui convertissent, des pages qui engagent et des visuels qui marquent.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3">
@@ -114,7 +113,7 @@ const HeroSection = () => {
                 }}
               >
                 <WhatsAppIcon />
-                Discuter sur WhatsApp
+                Obtenir un devis gratuit
               </a>
               <a
                 href="#services"
@@ -141,9 +140,9 @@ const HeroSection = () => {
             style={{ borderTop: '1px solid rgba(254,104,20,0.1)' }}
           >
             {[
-              { value: '10M+', label: 'Réactions & Trafic' },
-              { value: '99%', label: 'Satisfaction Clients' },
-              { value: '50+', label: 'Projets Réalisés' },
+              { value: '10M+', label: 'Vues & Interactions', sub: 'générées pour nos clients' },
+              { value: '99%', label: 'Clients Satisfaits', sub: 'sur 50+ projets livrés' },
+              { value: '50+', label: 'Projets Réalisés', sub: 'sites, apps, campagnes' },
             ].map((s) => (
               <div key={s.label} className="flex flex-col gap-0.5">
                 <span
@@ -152,8 +151,11 @@ const HeroSection = () => {
                 >
                   {s.value}
                 </span>
-                <span className="text-xs sm:text-sm leading-tight" style={{ color: '#6B8CAE' }}>
+                <span className="text-xs sm:text-sm leading-tight font-semibold" style={{ color: '#F0F4FF' }}>
                   {s.label}
+                </span>
+                <span className="text-xs leading-tight" style={{ color: '#6B8CAE' }}>
+                  {s.sub}
                 </span>
               </div>
             ))}

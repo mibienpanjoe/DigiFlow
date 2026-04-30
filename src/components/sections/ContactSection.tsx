@@ -100,7 +100,7 @@ const ContactSection = () => {
                   <span style={{ color: '#FE6814' }}>votre projet ?</span>
                 </h2>
                 <p className="text-sm leading-relaxed mt-4 max-w-xs" style={{ color: '#6B8CAE' }}>
-                  Discutons de vos ambitions et construisons l'avenir ensemble.
+                  Dites-nous votre projet. Nous vous répondons dans les 24h avec une proposition gratuite et sans engagement.
                 </p>
               </div>
             </Reveal>

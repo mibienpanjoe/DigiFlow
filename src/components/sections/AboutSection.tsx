@@ -76,8 +76,8 @@ const AboutSection = () => {
                 className="text-[clamp(1.8rem,4vw,3rem)] font-bold leading-tight tracking-tight text-cream"
                 style={{ fontFamily: 'Syne, sans-serif' }}
               >
-                Bâtie sur la créativité et l'excellence au{' '}
-                <span style={{ color: '#FE6814' }}>Burkina Faso.</span>
+                Une équipe burkinabè qui comprend vos clients mieux que{' '}
+                <span style={{ color: '#FE6814' }}>n'importe quelle agence étrangère.</span>
               </h2>
             </Reveal>
 
