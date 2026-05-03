@@ -75,9 +75,9 @@ const HeroSection = () => {
           {/* Subline + CTAs row */}
           <motion.div
             variants={itemVariants}
-            className="mt-10 flex flex-col lg:flex-row lg:items-end gap-8 lg:gap-16"
+            className="mt-10 flex flex-col gap-8 lg:items-center lg:text-center"
           >
-            <p className="max-w-sm text-base leading-relaxed" style={{ color: '#6B8CAE' }}>
+            <p className="max-w-md text-base leading-relaxed" style={{ color: '#6B8CAE' }}>
               Nous aidons les entreprises burkinabè à attirer plus de clients en ligne — avec des sites qui convertissent, des pages qui engagent et des visuels qui marquent.
             </p>
 

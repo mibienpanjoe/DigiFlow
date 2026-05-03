@@ -90,7 +90,7 @@ const ContactSection = () => {
           {/* Left: Info */}
           <div className="flex flex-col gap-10">
             <Reveal>
-              <div>
+              <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
                 <span className="section-label block mb-3">Contact</span>
                 <h2
                   className="text-[clamp(2rem,5vw,3.5rem)] font-bold tracking-tight leading-tight"
@@ -153,12 +153,12 @@ const ContactSection = () => {
             </div>
 
             {/* WhatsApp CTA */}
-            <Reveal delay={0.4}>
+            <Reveal delay={0.4} width="100%">
               <a
                 href="https://wa.me/22666220025"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-full text-sm font-semibold transition-all duration-300 hover:scale-105"
+                className="mx-auto lg:mx-0 flex w-fit items-center gap-2 px-5 py-3 rounded-full text-sm font-semibold transition-all duration-300 hover:scale-105"
                 style={{
                   fontFamily: 'Syne, sans-serif',
                   background: 'rgba(37,211,102,0.1)',
