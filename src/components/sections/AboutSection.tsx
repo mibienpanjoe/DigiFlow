@@ -70,7 +70,7 @@ const AboutSection = () => {
           </div>
 
           {/* Right: Mission text */}
-          <div className="flex flex-col gap-6 lg:gap-8 lg:pt-4">
+          <div className="flex flex-col items-center text-center lg:items-start lg:text-left gap-6 lg:gap-8 lg:pt-4">
             <Reveal delay={0.1}>
               <h2
                 className="text-[clamp(1.8rem,4vw,3rem)] font-bold leading-tight tracking-tight text-cream"
@@ -97,7 +97,7 @@ const AboutSection = () => {
             </Reveal>
 
             <Reveal delay={0.4}>
-              <div className="flex flex-wrap gap-3 pt-2">
+              <div className="flex flex-wrap justify-center lg:justify-start gap-3 pt-2">
                 {['Stratégie', 'Créativité', 'Performance', 'Proximité'].map((tag) => (
                   <span
                     key={tag}
