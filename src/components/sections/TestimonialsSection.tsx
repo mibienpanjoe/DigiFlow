@@ -101,7 +101,7 @@ const TestimonialsSection = () => {
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10 sm:mb-16">
+        <div className="flex flex-col items-center text-center gap-6 mb-10 sm:mb-16">
           <Reveal>
             <div>
               <span className="section-label block mb-3">Témoignages</span>
@@ -115,7 +115,7 @@ const TestimonialsSection = () => {
             </div>
           </Reveal>
           <Reveal delay={0.15}>
-            <p className="text-sm max-w-xs leading-relaxed" style={{ color: '#6B8CAE' }}>
+            <p className="text-sm max-w-md leading-relaxed" style={{ color: '#6B8CAE' }}>
               La confiance de nos clients est notre plus belle récompense.
             </p>
           </Reveal>

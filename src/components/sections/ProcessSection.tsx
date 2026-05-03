@@ -34,7 +34,7 @@ const ProcessSection = () => {
 
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10 sm:mb-16">
+        <div className="flex flex-col items-center text-center gap-6 mb-10 sm:mb-16">
           <Reveal>
             <div>
               <span className="section-label block mb-3">Comment ça marche</span>
@@ -47,7 +47,7 @@ const ProcessSection = () => {
             </div>
           </Reveal>
           <Reveal delay={0.15}>
-            <p className="text-muted text-sm max-w-xs leading-relaxed">
+            <p className="text-muted text-sm max-w-md leading-relaxed">
               Quatre étapes claires pour transformer votre vision en réalité digitale.
             </p>
           </Reveal>

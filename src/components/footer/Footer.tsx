@@ -1,4 +1,3 @@
-import { ArrowUp } from 'lucide-react';
 import { footerQuickLinks, footerServiceLinks, legalLinks } from '../../data/navigation';
 import { contact } from '../../constants/theme';
 
@@ -224,14 +223,6 @@ const Footer = () => {
                 {link.label}
               </a>
             ))}
-            <button
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="flex items-center gap-1.5 text-xs font-semibold transition-all duration-300 hover:scale-105"
-              style={{ fontFamily: 'Syne, sans-serif', color: '#FE6814' }}
-            >
-              Haut
-              <ArrowUp className="w-3 h-3" />
-            </button>
           </div>
         </div>
       </div>

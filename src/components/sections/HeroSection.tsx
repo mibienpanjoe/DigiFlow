@@ -57,7 +57,7 @@ const HeroSection = () => {
           {/* Main headline */}
           <motion.h1
             variants={itemVariants}
-            className="text-[clamp(2.2rem,5vw,4.5rem)] leading-[1.05] font-black tracking-tighter"
+            className="text-center text-[clamp(2.2rem,5vw,4.5rem)] leading-[1.05] font-black tracking-tighter"
             style={{ fontFamily: 'Syne, sans-serif' }}
           >
             <span
@@ -114,33 +114,6 @@ const HeroSection = () => {
             </div>
           </motion.div>
 
-          {/* Bottom stat strip */}
-          <motion.div
-            variants={itemVariants}
-            className="mt-10 sm:mt-16 pt-6 sm:pt-8 grid grid-cols-3 gap-4"
-            style={{ borderTop: '1px solid rgba(254,104,20,0.1)' }}
-          >
-            {[
-              { value: '10M+', label: 'Vues & Interactions', sub: 'générées pour nos clients' },
-              { value: '99%', label: 'Clients Satisfaits', sub: 'sur 50+ projets livrés' },
-              { value: '50+', label: 'Projets Réalisés', sub: 'sites, apps, campagnes' },
-            ].map((s) => (
-              <div key={s.label} className="flex flex-col gap-0.5">
-                <span
-                  className="font-black text-xl sm:text-2xl"
-                  style={{ fontFamily: 'Syne, sans-serif', color: '#FE6814' }}
-                >
-                  {s.value}
-                </span>
-                <span className="text-xs sm:text-sm leading-tight font-semibold" style={{ color: '#F0F4FF' }}>
-                  {s.label}
-                </span>
-                <span className="text-xs leading-tight" style={{ color: '#6B8CAE' }}>
-                  {s.sub}
-                </span>
-              </div>
-            ))}
-          </motion.div>
         </motion.div>
       </div>
     </section>
